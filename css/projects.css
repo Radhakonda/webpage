@@ -1,0 +1,159 @@
+body {
+      font-family: 'Segoe UI', sans-serif;
+
+    }
+    .navbar{
+      font-size: 18px;
+      font-weight: bold;
+      
+    }
+    
+    .navbar-brand img {
+      height: 100px;
+      width: 100px;
+    }
+    .logo-left {
+      height: 60px;
+    }
+    .header-text {
+      padding: 40px 0;
+      text-align: center;
+    }
+    .project-section {
+      background-color: #dff1ff;
+padding-top: 40px;
+    }
+    .project-section h2 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .project-description {
+      max-width: 900px;
+      margin: auto;
+      text-align: justify;
+      padding: 40px 20px;
+    }
+    .nav-item :hover{
+      color: #0056b3;
+    }
+
+    /* Custom dropdown submenu */
+    .dropdown-submenu {
+      position: relative;
+    }
+    .dropdown-submenu > .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -1px;
+    }
+
+    .header-text{
+         font-family: "Playfair Display", serif;
+    }
+   
+   
+    .features-container {
+      max-width: 90%;
+      background-color: #fff;
+      border-radius: 10px;
+      margin: 60px auto;
+      padding: 40px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .features-heading {
+      font-size: 32px;
+      font-weight: 700;
+      color: #0a3969;
+      margin-bottom: 25px;
+    }
+
+    .features-list {
+      padding-left: 1.2rem;
+      font-size: medium;
+      line-height: 1.2px;
+    }
+
+    .features-list li {
+      font-size: 16px;
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .image-section img {
+      width: 100%;
+      height: 50vh;
+      margin-bottom: 30px;
+    }
+    
+    .container-fluid{
+       font-family: "PT Serif", serif;
+    }
+    
+
+
+    
+    .contact-section {
+      background-color: #0e0e0e;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      padding: 60px 30px;
+    }
+    .contact-section h1 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+    }
+    .contact-section h5 {
+      margin-top: 20px;
+    }
+    .social-icons i {
+      font-size: 20px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    .form-control {
+      background-color: #f1f1f1;
+      border: none;
+      font-size: 16px;
+    }
+    .btn-submit {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+    }
+    .btn-submit:hover {
+      background-color: #004699;
+    }
+
+
+
+
+    .parallax {
+  background-image: url('/images/Final_Logo-png.png \(1\).jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+
+
+   .reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease-out;
+}
+.reveal.show {
+  opacity: 1;
+  transform: none;
+}
+
+
+
+
+
+
+    
+    @media (min-width: 992px) {
+      .image-section img {
+        margin-bottom: 0;
+      }
+    }

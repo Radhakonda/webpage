@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LANDIO – Sign Up</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Firebase (compat libs for simplicity) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+  <!-- Facebook SDK -->
+  <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <!-- reCAPTCHA v2 -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    body {
+      background: #fff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .auth-container {
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .close-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #ccc;
+    }
+    .divider:not(:empty)::before { margin-right: .75em; }
+    .divider:not(:empty)::after  { margin-left: .75em; }
+    .auth-btn {
+      width: 100%;
+      margin-bottom: .75rem;
+      font-weight: 500;
+    }
+    footer {
+      font-size: .85rem;
+      color: #666;
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="auth-container">
+    <div class="close-btn" onclick="window.location='index.html'">&times;</div>
+    <h2 class="fw-bold mb-2">Sign Up</h2>
+    <p class="mb-4 text-muted">Already a member? <a href="#" onclick="window.location='login.html'">Log In</a></p>
+
+    <!-- Google -->
+    <button id="btn-google" class="btn btn-light auth-btn border">
+      <img src="https://img.icons8.com/color/24/google-logo.png" class="me-2" alt="G"> Sign up with Google
+    </button>
+    <!-- Facebook -->
+    <button id="btn-facebook" class="btn btn-primary auth-btn">
+      <i class="bi bi-facebook me-2"></i> Sign up with Facebook
+    </button>
+
+    <div class="divider">or</div>
+
+    <!-- Email → opens Modal -->
+    <button class="btn btn-light auth-btn border" data-bs-toggle="modal" data-bs-target="#emailModal">
+      Sign up with email
+    </button>
+
+    <footer class="mt-4">
+      Your profile will be set to public automatically when you sign up. You can change this later in your profile settings.
+    </footer>
+  </div>
+
+  <!-- Email Signup Modal -->
+  <div class="modal fade" id="emailModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-4">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Sign Up with Email</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="emailForm">
+            <div class="mb-3 text-start">
+              <label class="form-label">Email</label>
+              <input type="email" id="emailInput" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+              <label class="form-label">Password</label>
+              <input type="password" id="passInput" class="form-control" required>
+            </div>
+            <div class="mb-3 text-start">
+              <!-- reCAPTCHA widget -->
+              <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase + Auth Logic -->
+  <script>
+    // Initialize Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyA9PYpgRauR67mDpuIeCtpIofe1zFQA_yU",
+      authDomain: "loginpagee-3368b.firebaseapp.com",
+      projectId: "loginpagee-3368b",
+      storageBucket: "loginpagee-3368b.firebasestorage.app",
+      messagingSenderId: "187794219575",
+      appId: "1:187794219575:web:28f9efee1c5915967b95b2",
+      measurementId: "G-7HMRDTB1RN"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Google OAuth
+    document.getElementById('btn-google').addEventListener('click', () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider)
+        .then(res => console.log('Google user:', res.user))
+        .catch(err => alert(err.message));
+    });
+
+    // Facebook SDK initialization
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : 'YOUR_FACEBOOK_APP_ID',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v12.0'
+      });
+    };
+
+    document.getElementById('btn-facebook').addEventListener('click', () => {
+      FB.login(function(response) {
+        if (response.authResponse) {
+          const credential = firebase.auth.FacebookAuthProvider.credential(response.authResponse.accessToken);
+          auth.signInWithCredential(credential)
+            .then(res => console.log('Facebook user:', res.user))
+            .catch(err => alert(err.message));
+        } else {
+          alert('User cancelled login or did not fully authorize.');
+        }
+      }, {scope: 'public_profile,email'});
+    });
+
+    // Email signup + reCAPTCHA
+    document.getElementById('emailForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('emailInput').value;
+      const pass  = document.getElementById('passInput').value;
+      const recaptchaResponse = grecaptcha.getResponse();
+
+      if (!recaptchaResponse) {
+        return alert('Please complete the reCAPTCHA.');
+      }
+
+      auth.createUserWithEmailAndPassword(email, pass)
+        .then(res => {
+          alert('Signed up as ' + res.user.email);
+          bootstrap.Modal.getInstance(document.getElementById('emailModal')).hide();
+        })
+        .catch(err => alert(err.message));
+    });
+  </script>
+
+  <!-- Bootstrap 5 Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

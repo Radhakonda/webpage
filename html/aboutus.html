@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="/css/about.css">
+
+</head>
+<body>
+    <section class="upload-section" id="upload-real-estate">
+        <h2>List Your Real Estate Project</h2>
+        <div class="upload-form">
+            <form action="/upload-real-estate" method="post" enctype="multipart/form-data">
+                <div class="form-group-upload">
+                    <label for="projectName">Project Name</label>
+                    <input type="text" id="projectName" name="projectName" required>
+                </div>
+                <div class="form-group-upload">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" name="location" required>
+                </div>
+                <div class="form-group-upload">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" rows="4"></textarea>
+                </div>
+                <div class="form-group-upload">
+                    <label for="propertyType">Property Type</label>
+                    <select id="propertyType" name="propertyType">
+                        <option value="apartment">Apartment</option>
+                        <option value="house">House/Villa</option>
+                        <option value="land">Land/Plot</option>
+                        <option value="commercial">Commercial Space</option>
+                        </select>
+                </div>
+                <div class="form-group-upload">
+                    <label for="price">Price (INR)</label>
+                    <input type="number" id="price" name="price" min="0" required>
+                </div>
+                <div class="form-group-upload">
+                    <label for="image1">Upload Main Image</label>
+                    <input type="file" id="image1" name="image1" accept="image/*" required>
+                </div>
+                <div class="form-group-upload">
+                    <label for="image2">Upload Additional Image (Optional)</label>
+                    <input type="file" id="image2" name="image2" accept="image/*">
+                </div>
+                <div class="form-group-upload">
+                    <label for="image3">Upload Additional Image (Optional)</label>
+                    <input type="file" id="image3" name="image3" accept="image/*">
+                </div>
+                <button type="submit" class="upload-button">List Project</button>
+            </form>
+        </div>
+     </section>
+     <script>
+        document.querySelector('.upload-form form').addEventListener('submit', e => {
+  const price = +document.getElementById('price').value;
+  if (price <= 0) {
+    e.preventDefault();
+    alert('Please enter a valid price greater than zero.');
+  }
+});
+     </script>
+</body>
+</html>

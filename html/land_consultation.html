@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Land Consultation</title>
+  <link rel="stylesheet" href="/css/land_consultant.css">
+</head>
+<body>
+
+  <div class="container">
+    <!-- Form Section -->
+    <!-- Inside form-section -->
+<div class="form-section">
+  <h2>Land Consultation</h2>
+
+  <label>Service Type</label>
+<input type="text" id="serviceType" value="Appointment" disabled>
+
+<label>Service Name</label>
+<input type="text" id="serviceName" placeholder="Land Consultation">
+
+<label>Tagline (optional)</label>
+<input type="text" id="tagline" placeholder="e.g. Expert guidance at your location">
+
+<label>Description (optional)</label>
+<textarea id="description" placeholder="Explain your service to customers..."></textarea>
+
+<div class="flex-row">
+  <div>
+    <label>Duration</label>
+    <select id="duration">
+      <option>1 hour</option>
+      <option>30 mins</option>
+    </select>
+  </div>
+  <div>
+    <label>Buffer Time</label>
+    <select id="bufferTime">
+      <option>None</option>
+      <option>10 mins</option>
+    </select>
+  </div>
+</div>
+
+<button class="btn" id="saveBtn">Save</button>
+
+</div>
+
+    <!-- Preview Section -->
+    <div class="preview-section">
+      <!-- Preview Row (Image on top, Overview below it, Land Consultation beside image) -->
+      <div class="preview-row">
+        <!-- Image Section -->
+        <div>
+          <img src="/mnt/data/radha ff.jpg" alt="Service Image" class="preview-image">
+        </div>
+
+        <!-- Overview Section beside the image -->
+        <div class="overview-section">
+          <h3>Overview</h3>
+          <div class="overview-info">
+            <p><strong>Land Consultation</strong></p>
+            <p>💸 ₹999</p>
+            <p>⏱ 1 hour</p>
+            <p>📍 Client's Place</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Display Settings -->
+      <div class="display-settings">
+        <h4>Display Settings</h4>
+
+        <label>
+          <span style="margin-right: 10px;">Visible on site:</span>
+          <label class="toggle-switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+        </label>
+
+        <label style="margin-top: 15px;">Service Category</label>
+        <select>
+          <option selected>Our Services</option>
+          <option>Consulting</option>
+          <option>Advisory</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <script src="/js/landjavascript.js"></script>
+
+</body>
+</html>

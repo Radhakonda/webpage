@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Services</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- AOS Animation Library -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+ <link rel="stylesheet" href="/css/explore.css">
+</head>
+<body>
+
+  <section class="services-section">
+    <!-- Left -->
+    <div class="services-left" data-aos="fade-right">
+      <h2>Our Services</h2>
+      <p>
+        At Landio, we offer a range of client-centric services designed to meet your unique requirements.
+        From property consultation to land acquisition, we are here to assist you every step of the way.
+      </p>
+      <button class="discover-btn" onclick="window.location.href='discover.html';">Discover More</button>
+      <button class="contact-btn" onclick="window.location.href='index.html';">Get in Touch</button>
+    </div>
+
+    <!-- Right -->
+    <div class="services-right">
+      <div class="card" data-aos="fade-up">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Land Acquisition</h3>
+        <p>
+          Whether you're looking to buy, sell, or develop land, our team provides customized solutions tailored to your goals.
+        </p>
+        <a href="#">Learn More</a>
+      </div>
+
+      <div class="card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-building"></i>
+        <h3>Project Development</h3>
+        <p>
+          From design to execution, we ensure your project meets the highest standards with professional guidance at every stage.
+        </p>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chat Button -->
+<button class="chat-btn" id="chatBtn"><i class="fas fa-comments"></i> Let’s Chat!</button>
+
+<div class="chat-popup" id="chatPopup">
+  <div class="chat-header">
+    <span class="chat-title">Landio</span>
+    <span class="chat-status">🟢 We’ll reply as soon as we can</span>
+    <button class="close-btn" id="closeChat">&times;</button>
+  </div>
+
+  <div class="chat-body" id="chatBody">
+  </div>
+
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Write your message...">
+    <button id="sendBtn">➤</button>
+  </div>
+</div>
+
+  <!-- AOS Library -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="/js/index.js"></script>
+
+</body>
+</html>
